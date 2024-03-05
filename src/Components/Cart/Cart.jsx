@@ -3,37 +3,15 @@ import { useState ,useContext} from 'react';
 import {Table,Modal,Button} from 'react-bootstrap'
 import CartContext from '../store/CartContext';
 import "./Cart.css"
-
-const cartElements  = [
-    {
-    title: 'Colors',
-    price: 100,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
-    quantity: 1,
-    },
-    {
-    title: 'Black and white Colors',
-    price: 50,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
-    quantity: 3,
-    },
-    {
-    title: 'Yellow and Black Colors',
-    price: 70,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
-    quantity:5,
-    },
-    {
-    title: 'Blue Color',
-    price: 100,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-    quantity:2,
-    }
-    ]
     
     
 const Cart = () => {
-    const {show,handleShow,handleClose} = useContext(CartContext);
+    const {show,handleShow,handleClose,cartElements} = useContext(CartContext);
+    // const [totalAmount,setTotalAmount] = useState(0)
+    let totalAmount = 0;
+    cartElements.map((item)=>{
+      totalAmount+=parseInt(item.price)*parseInt(item.quantity)
+    })
   return (
     <div >
       <Modal
@@ -57,7 +35,7 @@ const Cart = () => {
             <tbody>
             {
                 cartElements.map((item)=>(
-                <tr >
+                <tr key={Math.random(10)}>
                     <td><img src={item['imageUrl']} alt='img1' width='70px'/> {item['title'].slice(0,6)} </td>
                     <td>${item['price']}</td>
                 <td style={{textAlign:'center'}}>{item['quantity']}</td> 
@@ -69,7 +47,7 @@ const Cart = () => {
                 <td></td>
                 <td></td>
                 <td>Total</td>
-                <td>$200</td>
+                <td>${totalAmount}</td>
             </tr>
             </tbody>
             </Table>
