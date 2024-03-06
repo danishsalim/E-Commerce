@@ -1,0 +1,29 @@
+.aboutContainer{
+  display: flex;
+  flex-flow: column ;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.aboutContainer section{
+    display: flex;
+    max-width: 80%;
+    font-size: 18px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    gap: 30px;
+   
+}
+.aboutContainer section span{
+    overflow: hidden;
+    word-wrap: break-word;
+    color: rgb(0,0,0,.65);
+    width:fit-content;
+}
+
+.aboutContainer section img{
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    
+}

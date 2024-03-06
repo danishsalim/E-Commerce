@@ -1,16 +1,20 @@
 .heading{
     align-items: center;
     margin-top: 3rem ;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: center;
     background-color: #777777;
     color: #FFFFFF;
-    height: 28vh;
-   
+    height: 28vh;  
 }
+
 h1{
     font-size: 4rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight:900;
+}
+
+.active{
+    text-decoration: underline;
 }

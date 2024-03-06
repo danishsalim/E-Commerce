@@ -12,7 +12,6 @@ const Footer = () => {
             <img src={img1} alt="img1" width={50}/>
             <img src={img2} alt="img2" width={50}/>
         </div>
-    
     </div>
   )
 }
