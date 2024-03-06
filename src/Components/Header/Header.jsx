@@ -10,7 +10,7 @@ const Header = () => {
      <Navbar bg="dark" data-bs-theme="dark" fixed="top"  style={{marginBottom:'3rem',width:'100'}} >
         <Container style={{width:'100'}}>
           <Nav style={{width:"100vw",marginLeft:'40%',display:'flex',justifyContent:'center'}}>
-            <NavLink to="/" className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Home</NavLink>
+            <NavLink to="/Home" className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Home</NavLink>
             end
             <NavLink to="/" className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Store</NavLink>
             end
