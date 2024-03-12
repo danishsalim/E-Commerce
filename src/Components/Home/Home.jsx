@@ -1,5 +1,6 @@
 import React from 'react'
 import './Home.css'
+import {NavLink,useParams} from 'react-router-dom'
 import { FaRegCirclePlay } from "react-icons/fa6";
 
 const Home = () => {
