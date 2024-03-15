@@ -1,0 +1,16 @@
+.contain{
+    margin-top: 6rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+   
+}
+.contain h1{
+    padding: 0;
+}
+.contain ul{
+    text-decoration: none; 
+    list-style: none;
+    margin: auto;
+    line-height: 2rem;
+}

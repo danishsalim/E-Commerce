@@ -1,0 +1,14 @@
+.carousel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.2rem;
+    width:20rem;
+    height: 20rem;
+}
+.carousel img{
+    width: 15rem;
+    height: 15rem;
+    /* margin-left: 2rem; */
+    
+}

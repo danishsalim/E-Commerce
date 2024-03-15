@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-
+import './Contact.css'
 const Contact = () => {
     const [validated, setValidated] = useState(false);
     // const [user,setUser] =useState()
@@ -41,7 +41,7 @@ const Contact = () => {
       };
     
   return (
-<Form noValidate validated={validated} onSubmit={handleSubmit}>
+<Form noValidate validated={validated} onSubmit={handleSubmit} className='contact-container'>
       <Row className="mb-3">
         <Form.Group as={Col} md="4" controlId="validationCustom01">
           <Form.Label>Name</Form.Label>

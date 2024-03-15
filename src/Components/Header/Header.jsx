@@ -1,5 +1,5 @@
 import React,{useContext, useState} from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink,Route, Routes} from 'react-router-dom'
 import {Navbar,Nav,Container, Button} from 'react-bootstrap';
 import CartContext from '../store/CartContext';
 import Heading from './Heading';
@@ -17,22 +17,28 @@ const Header = () => {
 
   return (
     <>
-     <Navbar bg="dark" data-bs-theme="dark" fixed="top"  style={{marginBottom:'3rem',width:'100',}} >
+     <Navbar bg="dark" data-bs-theme="dark" fixed="top"  style={{marginBottom:'3rem',width:'100',height:'100px'}} >
         <Container style={{width:'100',}} >
-          <Nav  style={{width:"100vw",marginLeft:'40%',display:'flex',justifyContent:'center'}}>
-            <NavLink to="/Home" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Home</NavLink>
+          <Nav  style={{width:"100vw",display:'flex',justifyContent:'center'}}>
+            <NavLink to="/Home" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>Home</NavLink>
             end
             <NavLink to="/" onClick={showButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Store</NavLink>
             end
-            <NavLink to="/About" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>About</NavLink>
+            <NavLink to="/About" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>About</NavLink>
             end
-            <NavLink to="/Contact" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Contact</NavLink>
-            
+            <NavLink to="/Contact" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>Contact</NavLink>
+          </Nav>
+          <Nav  style={{width:"100vw",display:'flex',justifyContent:'center'}}>
            {flag && <Button style={{marginLeft:'auto',}} className={flag?"":'hidden'} onClick={handleShow}> cart {total>0?total:''}</Button> }
           </Nav>
         </Container>
       </Navbar>
-      <Heading /> 
+      <Routes>
+         <Route path='/' element={<Heading /> } />
+         <Route path='/Home' element={<Heading /> } />
+      </Routes>
+     
+      
     </>
   )
 }
