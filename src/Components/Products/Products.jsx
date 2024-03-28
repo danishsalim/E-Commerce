@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import CartContext from "../store/CartContext";
 import Product from "./Product";
 import {Row,Col, Button} from "react-bootstrap";
 
@@ -33,6 +35,7 @@ const productsArr = [
     ]
 
 const Products = () => {
+    const {handleShow} = useContext(CartContext)
   return (
     <div className='d-flex flex-column justify-content-center align-items-center'>
         <h1>Music</h1>
@@ -46,7 +49,7 @@ const Products = () => {
                     ))
             }
         </Row>
-        <Button>see the cart</Button>
+        <Button onClick={handleShow}>see the cart</Button>
     </div>
   )
 }

@@ -4,8 +4,10 @@ import {Navbar,Nav,Container, Button} from 'react-bootstrap';
 import CartContext from '../store/CartContext';
 import Heading from './Heading';
 import "./Header.css"
+import AuthContext from '../store/AuthContext';
 
 const Header = () => {
+  const authctx = useContext(AuthContext)
   const {handleShow,total} = useContext(CartContext)
   const [flag,setFlag]=useState(true)
   const hideButton=()=>{
@@ -26,10 +28,13 @@ const Header = () => {
             end
             <NavLink to="/About" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>About</NavLink>
             end
+            <NavLink to="/Auth" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>{!authctx.isLoggedIn?'Login':'' }</NavLink>
+            end
             <NavLink to="/Contact" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>Contact</NavLink>
+            {authctx.isLoggedIn && <Button style={{marginLeft:'auto',}} onClick={authctx.logout}> Logout </Button> }
           </Nav>
           <Nav  style={{width:"100vw",display:'flex',justifyContent:'center'}}>
-           {flag && <Button style={{marginLeft:'auto',}} className={flag?"":'hidden'} onClick={handleShow}> cart {total>0?total:''}</Button> }
+           {authctx.isLoggedIn && <Button style={{marginLeft:'auto',}}  onClick={handleShow}> cart {total>0?total:''}</Button> }
           </Nav>
         </Container>
       </Navbar>

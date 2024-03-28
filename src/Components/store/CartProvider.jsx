@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import CartContext from "./CartContext";
+import AuthContext from './AuthContext';
+import {useNavigate} from 'react-router-dom'
 const productsArr = [
   {
   id:1,
@@ -71,34 +73,48 @@ const CartProvider = (props) => {
     const [show, setShow] = useState(false);
     const [items,setItems] = useState([]);
     const [total,setTotal] =useState(0)
-  
+    const {isLoggedIn} = useContext(AuthContext)
+    const navigate=useNavigate()
 
     const addItemTOCart = (newItem)=>{
-        if(items.length==0)
-          {
-            setItems((prev)=>[...prev,newItem])
+      if(!isLoggedIn)
+      {
+        navigate('/auth')
+      }
+      else
+      {
+         if(items.length==0)
+            {
+              setItems((prev)=>[...prev,newItem])
+            }
+          else{
+            let flag=false
+              const updatedItems = items.map((item)=>{
+                  if(item.id==newItem.id)
+                  {
+                    flag=true
+                    return {...item,quantity:parseInt(item['quantity'])+1}
+                  }
+                  return item
+                })
+            flag==true?setItems(updatedItems):setItems((prev)=>[...prev,newItem])
           }
-        else{
-          let flag=false
-            const updatedItems = items.map((item)=>{
-                if(item.id==newItem.id)
-                {
-                  flag=true
-                  return {...item,quantity:parseInt(item['quantity'])+1}
-                }
-                return item
-              })
-          flag==true?setItems(updatedItems):setItems((prev)=>[...prev,newItem])
-        }
-
-      setTotal((prev)=>prev+1)
+        setTotal((prev)=>prev+1)
+      }
     }
 
     const handleClose = () => {
       setShow(false) 
     };
     const handleShow = () => {
-      setShow(true) 
+      if(!isLoggedIn)
+      {
+        navigate('/auth')
+      }
+      else
+      {
+        setShow(true) 
+      }
     };
 
 
