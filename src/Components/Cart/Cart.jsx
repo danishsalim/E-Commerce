@@ -6,12 +6,22 @@ import "./Cart.css"
     
     
 const Cart = () => {
-    const {show,handleShow,handleClose,cartElements} = useContext(CartContext);
+    const {show,handleShow,handleClose,cartElements,setCartElements,setTotal} = useContext(CartContext);
     // const [totalAmount,setTotalAmount] = useState(0)
     let totalAmount = 0;
     cartElements.map((item)=>{
       totalAmount+=parseInt(item.price)*parseInt(item.quantity)
     })
+    const removeItemsFromCart=(id)=>{
+      let updatedCart=cartElements.filter((item)=>item.id!==id)
+      setCartElements(updatedCart)
+    }
+    const purchaseHandler=()=>{
+      console.log('your order has been placed . Thankyou!!!')
+      setCartElements([])
+      handleClose()
+      setTotal(0)
+    }
   return (
     <div >
       <Modal
@@ -39,7 +49,7 @@ const Cart = () => {
                     <td><img src={item['imageUrl']} alt='img1' width='70px'/> {item['title'].slice(0,6)} </td>
                     <td>${item['price']}</td>
                 <td style={{textAlign:'center'}}>{item['quantity']}</td> 
-                <td><Button variant="danger" size="sm">Remove</Button></td>
+                <td><Button variant="danger" size="sm" onClick={()=>removeItemsFromCart(item.id)}>Remove</Button></td>
                 </tr>
                 ))
             }
@@ -53,7 +63,7 @@ const Cart = () => {
             </Table>
         </Modal.Body>
   
-          <Button >Purchase</Button>
+          <Button onClick={purchaseHandler}>Purchase</Button>
       </Modal>
     </div>
   )

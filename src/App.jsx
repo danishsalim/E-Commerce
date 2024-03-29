@@ -24,13 +24,13 @@ function App() {
       <Header />
       <Cart />
         <Routes>
-              <Route path='/' element={<Products />}  exact/>
+              <Route path='/products' element={<Products />}  exact/>
               <Route path='/:id' element={<ProductDetail />} />
-              <Route path='/Home' element={<Home />} />
-              <Route path='/About' element={<About /> } />
-              <Route path='/Auth' element={<AuthForm /> } />
-              <Route path='/Contact' element={<Contact /> } /> 
-              <Route path="/ProductDetail" element={<ProductDetail />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/about' element={<About /> } />
+              <Route path='/auth' element={<AuthForm /> } />
+              <Route path='/contact' element={<Contact /> } /> 
+              <Route path="/productDetail" element={<ProductDetail />} />
         </Routes>
       <Footer />
      </CartProvider>

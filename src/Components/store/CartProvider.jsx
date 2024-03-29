@@ -124,7 +124,9 @@ const CartProvider = (props) => {
       show:show,
       addItemTOCart:addItemTOCart,
       cartElements:items,
+      setCartElements:setItems,
       total:total,
+      setTotal:setTotal,
       productsArr:productsArr,
     }
     

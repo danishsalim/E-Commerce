@@ -45,7 +45,7 @@ const AuthForm = () => {
     {
       const data = await response.json()
       login(data.idToken)
-      navigate('/')
+      navigate('/Products')
       console.log(data)
     }
     else{

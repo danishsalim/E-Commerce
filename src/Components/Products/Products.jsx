@@ -2,7 +2,7 @@ import { useContext } from "react";
 import CartContext from "../store/CartContext";
 import Product from "./Product";
 import {Row,Col, Button} from "react-bootstrap";
-
+import "./Products.css"
 const productsArr = [
     {
     id:1,
@@ -37,13 +37,13 @@ const productsArr = [
 const Products = () => {
     const {handleShow} = useContext(CartContext)
   return (
-    <div className='d-flex flex-column justify-content-center align-items-center'>
+    <div className='d-flex flex-column justify-content-center align-items-center products'>
         <h1>Music</h1>
         <Row xs={1} md={2} className="g-4 " style={{marginLeft:'5%'}} > 
             {
                 productsArr.map((item,idx)=>(
                     <Col key={idx} className='d-flex flex-column justify-content-center align-items-center'>
-                        <h3 >Album {idx+1}</h3>
+                        <h3 >Product {idx+1}</h3>
                         <Product  img={item.imageUrl} title={item.title} price={item.price} id={item.id} />
                     </Col>
                     ))
