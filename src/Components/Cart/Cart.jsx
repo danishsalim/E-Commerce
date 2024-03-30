@@ -3,18 +3,51 @@ import { useState ,useContext} from 'react';
 import {Table,Modal,Button} from 'react-bootstrap'
 import CartContext from '../store/CartContext';
 import "./Cart.css"
+import AuthContext from '../store/AuthContext';
     
     
 const Cart = () => {
     const {show,handleShow,handleClose,cartElements,setCartElements,setTotal} = useContext(CartContext);
-    // const [totalAmount,setTotalAmount] = useState(0)
+    const {emailId} = useContext(AuthContext)
+    
     let totalAmount = 0;
     cartElements.map((item)=>{
       totalAmount+=parseInt(item.price)*parseInt(item.quantity)
     })
-    const removeItemsFromCart=(id)=>{
-      let updatedCart=cartElements.filter((item)=>item.id!==id)
+
+    const removeBackendItem=async(backendRemovalId)=>{
+      const response = await fetch("https://crudcrud.com/api/4e4d0d2d980c4e12978b4b402900d851/cart"+emailId+"/"+backendRemovalId,{
+        method:'DELETE',
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+    }
+
+    const removeItemsFromCart=async(id)=>{
+      let quantity;
+      let updatedCart=cartElements.filter((item)=>{
+        if(item.id!==id){
+          return item
+        }
+        quantity=item.quantity
+      })
       setCartElements(updatedCart)
+      localStorage.setItem("cart"+emailId,JSON.stringify(updatedCart))
+      let data=JSON.parse(localStorage.getItem('data')||[])
+      let backendRemovalIds=[]
+      data.filter((item)=>{
+        if(item.id==id)
+        {
+          backendRemovalIds.push(item._id)
+        }
+      });
+      
+      backendRemovalIds.map(rid=>{
+        removeBackendItem(rid)
+      })
+      setTotal(prev=>prev-quantity)
+      
     }
     const purchaseHandler=()=>{
       console.log('your order has been placed . Thankyou!!!')

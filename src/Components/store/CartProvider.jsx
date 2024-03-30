@@ -77,12 +77,7 @@ const CartProvider = (props) => {
     const navigate=useNavigate()
 
     const addItemTOCart = (newItem)=>{
-      if(!isLoggedIn)
-      {
-        navigate('/auth')
-      }
-      else
-      {
+
          if(items.length==0)
             {
               setItems((prev)=>[...prev,newItem])
@@ -100,7 +95,7 @@ const CartProvider = (props) => {
             flag==true?setItems(updatedItems):setItems((prev)=>[...prev,newItem])
           }
         setTotal((prev)=>prev+1)
-      }
+      
     }
 
     const handleClose = () => {

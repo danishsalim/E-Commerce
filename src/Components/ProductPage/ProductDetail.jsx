@@ -23,27 +23,18 @@ const ProductDetail = () => {
     //     .reviews.stars.map((star)=>handleStars(star))
         
 
-    const reviews = 
-            <ul>
-              {
-              productsArr.filter((prod)=>prod.id==id)[0]
-              .reviews.map((review)=>(
-                <>
-                                <li>{handleStars(review.stars)}</li>
-                                <li>{review.comment}</li>
-                            </>
-              ))
-              }
-           </ul>
-    
+    const reviews = productsArr.filter((prod)=>prod.id==id)[0]
+                    .reviews.map((review,idx)=>(
+                      <ul key={idx}>
+                        <li>{handleStars(review.stars)}</li>
+                        <li>{review.comment}</li>
+                      </ul>
+                    ))                    
+               
   return (
-    <div className='contain'>
-      
+    <div className='contain'>  
         <ImageGallery  id={id}/>
-        <span> <h1>Reviews</h1> {reviews}</span>
-         
-        
-        
+        <span> <h1>Reviews</h1> {reviews}</span>    
     </div>
   )
 }

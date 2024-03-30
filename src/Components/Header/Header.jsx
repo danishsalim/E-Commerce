@@ -24,13 +24,13 @@ const Header = () => {
           <Nav  style={{width:"100vw",display:'flex',justifyContent:'center'}}>
             <NavLink to="/" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>Home</NavLink>
             end
-            <NavLink to={authctx.isLoggedIn?"/products":"/auth"} onClick={showButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Store</NavLink>
+            <NavLink to={authctx.isLoggedIn?"/Products":"/Auth"} onClick={showButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",marginRight:'10px'}}>Store</NavLink>
             end
-            <NavLink to="/about" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>About</NavLink>
+            <NavLink to="/About" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>About</NavLink>
             end
-            <NavLink to="/auth" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>{!authctx.isLoggedIn?'Login':'' }</NavLink>
+            <NavLink to="/Auth" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>{!authctx.isLoggedIn?'Login':'' }</NavLink>
             end
-            <NavLink to="/contact" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>Contact</NavLink>
+            <NavLink to="/Contact" onClick={hideButton} className={({ isActive}) => isActive ? "active" : ""} style={{color:"white",}}>Contact</NavLink>
             {authctx.isLoggedIn && <Button style={{marginLeft:'auto',}} onClick={authctx.logout}> Logout </Button> }
           </Nav>
           <Nav  style={{width:"100vw",display:'flex',justifyContent:'center'}}>
@@ -38,10 +38,7 @@ const Header = () => {
           </Nav>
         </Container>
       </Navbar>
-      <Routes>
-         <Route path='/' element={<Heading /> } />
-         <Route path='/home' element={<Heading /> } />
-      </Routes>
+      
      
       
     </>

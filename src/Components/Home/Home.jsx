@@ -1,11 +1,14 @@
 import React from 'react'
 import './Home.css'
+import Heading from '../Header/Heading';
 import {NavLink,useParams} from 'react-router-dom'
 import { FaRegCirclePlay } from "react-icons/fa6";
 
 const Home = () => {
   return (
-    <div className='home'>
+    <>
+       <Heading />
+       <div className='home'>
         <div className='homeHeading'>
             <button>Get Your Latest Album</button>
             <button><FaRegCirclePlay /></button>
@@ -55,7 +58,7 @@ const Home = () => {
             </div>
         </div>
     </div>
-    
+   </>
   )
 }
 
